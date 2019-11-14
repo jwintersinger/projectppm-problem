@@ -1,5 +1,4 @@
 import numpy as np
-import common
 import ctypes
 import numpy.ctypeslib as npct
 import subprocess
@@ -23,6 +22,7 @@ def _convert_adjm_to_adjlist(adjm):
   return adjl
 
 def fit_etas(adj, superclusters, supervars):
+  import common
   svids = common.extract_vids(supervars)
   R = np.array([supervars[svid]['ref_reads'] for svid in svids])
   V = np.array([supervars[svid]['var_reads'] for svid in svids])

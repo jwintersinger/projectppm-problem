@@ -7,14 +7,13 @@ def main():
 
   for trial in range(1000000):
     if trial % 100 == 0:
-      print(trial)
+      print('iteration=%s' % trial)
 
-    eta = pf._project_ppm(f['adj'], f['phi_hat'], f['var_phi_hat'], 0)
-    #eta = pf._fit_eta_S_subprocess(f['adj'], f['phi_hat'], f['var_phi_hat'])
-    #eta = pf._fit_eta_S_ctypes(f['adj'], f['phi_hat'], f['var_phi_hat'])
+    eta = pf._fit_eta_S_ctypes(F['adj'], F['phi_hat'], F['var_phi_hat'])
+    #eta = pf._fit_eta_S_subprocess(F['adj'], F['phi_hat'], F['var_phi_hat'])
 
     if np.any(np.isnan(eta)):
-      print('nan', trial, np.sum(np.isnan(eta)))
+      print('Got', np.sum(np.isnan(eta)), 'NaNs on iteration', trial)
       break
 
 main()
