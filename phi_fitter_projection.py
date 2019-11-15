@@ -121,6 +121,19 @@ def _project_ppm(adjm, phi_hat, var_phi_hat, root):
   deg = np.require(deg, requirements='C')
   adjl_mat = np.require(adjl_mat, requirements='C')
 
+  for arr in (
+    inner_flag,
+    compute_eta,
+    eta,
+    M,
+    S,
+    phi_hat,
+    gamma_init,
+    root,
+    deg,
+    adjl_mat,
+  ):
+    assert not np.any(np.isnan(arr))
   cost = _project_ppm.tree_cost_projection(
     inner_flag,
     compute_eta,
