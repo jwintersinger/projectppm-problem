@@ -16,9 +16,9 @@ Compiling
 
 Example 1
 ---------
-The NaN bug can be reproduced by running `python3 problem.py`. This loads the
+The NaN bug can be reproduced by running `python3 example1.py`. This loads the
 `adj`, `phi_hat`, and `var_phi_hat` arrays from the `example1.npz` file and
-calls your projection code using CTypes. All 31 values in the returned `M`
+calls your projection code using `ctypes`. All 31 values in the returned `M`
 array are NaN, despite none of the inputs passed to `tree_cost_projection()`
 being NaN.
 
@@ -29,5 +29,6 @@ NaNs.
 Example 2
 ---------
 The NaN bug can be reprouced by running `bash example2.sh`. This pipes
-example2.txt to the `projectppm` binary. Here the bug isn't stochastic -- every
-attempt will reliably return all NaNs.
+`example2.txt` to the `projectppm` binary, which writes its result on stdout.
+Here the bug isn't stochastic -- every attempt seems to reliably return all
+NaNs.
